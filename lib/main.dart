@@ -28,12 +28,12 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
-  final keys = GlobalKey<FormState>();
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: keys,
+      key: _key,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -81,7 +81,7 @@ class _MyFormState extends State<MyForm> {
             padding: const EdgeInsets.only(top: 8.0),
             child: ElevatedButton(
               onPressed: () {
-                if (keys.currentState!.validate()) {
+                if (_key.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Form Submitted')));
                 }
